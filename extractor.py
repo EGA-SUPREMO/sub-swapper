@@ -5,6 +5,7 @@ def extract_subs_ffmpeg(input_file, output_file):
     cmd = [
         'ffmpeg',
         '-i', input_file,
+        '-c', 'copy'
         '-c:s', 'mov_text',  # Specify subtitle codec (mov_text for text-based subtitles)
         output_file
     ]
