@@ -1,10 +1,11 @@
 from pysubparser import parser
 
-print(subtitles)
-for subtitle in subtitles:
-    print(subtitle.text)
-
 def read_subs(input_1: str, input_2: str):
-    subtitles1 = parser.parse(input_1)
-    subtitles2 = parser.parse(input_2)
+    return parser.parse(input_1), parser.parse(input_2)
     
+
+subtitles1, subtitles2 = read_subs("subs_en.srt", "subs_indo.srt")
+for subtitle in subtitles1:
+    print(subtitle.text)
+print(subtitles1)
+print(subtitles2)
