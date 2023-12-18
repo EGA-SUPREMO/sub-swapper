@@ -20,23 +20,21 @@ def read_subs(input_1: str, input_2: str):
 
 
 
-def get_grading_level():
-    pass
-
-text = "Saya suka makan nasi goreng."
-#text = "Contoh kalimat dalam bahasa Indonesia."
-#text = "banyak orang tetap antusias untuk menghadiri acara tersebut di taman kota"
-#text = "Harry Potter was a highly unusual boy in many ways. For one thing, he hated the summer holidays more than any other time of year. For another, he really wanted to do his homework, but was forced to do it in secret, in the dead of the night. And he also happened to be a wizard."
-
-
-
-
-coleman_liau_index = textstat.coleman_liau_index(text)
-
-print(f"Coleman-Liau Index: {coleman_liau_index}")
+def set_grading_level(subtitles):
+    #text = "Saya suka makan nasi goreng."
+    #text = "Contoh kalimat dalam bahasa Indonesia."
+    #text = "banyak orang tetap antusias untuk menghadiri acara tersebut di taman kota"
+    #text = "Harry Potter was a highly unusual boy in many ways. For one thing, he hated the summer holidays more than any other time of year. For another, he really wanted to do his homework, but was forced to do it in secret, in the dead of the night. And he also happened to be a wizard."
+    #coleman_liau_index = textstat.coleman_liau_index(text)
+    #print(f"Coleman-Liau Index: {coleman_liau_index}")
+    for subtitle in subtitles:
+        subtitle.grade_level = textstat.coleman_liau_index(subtitle.subtitle_line.text)
 
 
 subtitles1, subtitles2 = read_subs("subs_en.srt", "subs_indo.srt")
+set_grading_level(subtitles1)
+set_grading_level(subtitles2)
 
+print(subtitles1[1].grade_level)
 print(subtitles1[100].subtitle_line.text)
 print(subtitles2[100].subtitle_line.text)
