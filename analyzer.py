@@ -1,9 +1,21 @@
 from pysubparser import parser
+import textstat
 
 def read_subs(input_1: str, input_2: str):
     return list(parser.parse(input_1)), list(parser.parse(input_2))
 
-subtitles1, subtitles2 = read_subs("subs_en.srt", "subs_indo.srt")
 
-print(subtitles1[0])
-print(subtitles2[0])
+#text = "Saya suka makan nasi goreng."
+#text = "Contoh kalimat dalam bahasa Indonesia."
+#text = "banyak orang tetap antusias untuk menghadiri acara tersebut di taman kota"
+#text = "Harry Potter was a highly unusual boy in many ways. For one thing, he hated the summer holidays more than any other time of year. For another, he really wanted to do his homework, but was forced to do it in secret, in the dead of the night. And he also happened to be a wizard."
+
+coleman_liau_index = textstat.coleman_liau_index(text)
+
+print(f"Coleman-Liau Index: {coleman_liau_index}")
+
+
+#subtitles1, subtitles2 = read_subs("subs_en.srt", "subs_indo.srt")
+
+#print(subtitles1[0])
+#print(subtitles2[0])
