@@ -19,7 +19,7 @@ def extract_subs_ffmpeg(input_file, output_file):
 
 # Example usage
 input_file = 'scot.mkv'
-output_file = 'output_subtitles.ass'  # You can change the extension based on the subtitle format you want
+output_file = 'output_subtitles.srt'  # You can change the extension based on the subtitle format you want
 
 extract_subs_ffmpeg(input_file, output_file)
  
