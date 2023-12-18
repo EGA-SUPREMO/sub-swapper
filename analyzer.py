@@ -35,6 +35,6 @@ subtitles1, subtitles2 = read_subs("subs_en.srt", "subs_indo.srt")
 set_grading_level(subtitles1)
 set_grading_level(subtitles2)
 
-print(subtitles1[1].grade_level)
+print(subtitles1[-2].subtitle_line.text)
 print(subtitles1[100].subtitle_line.text)
 print(subtitles2[100].subtitle_line.text)

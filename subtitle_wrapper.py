@@ -4,4 +4,5 @@ class SubtitleWrapper:
         self.subtitle_line = subtitle_line
         self.id_line_external = id_line_external
         self.grade_level = grade_level
-        self.is_valid = is_valid 
+        self.is_valid = is_valid
+        self.swap = False 
