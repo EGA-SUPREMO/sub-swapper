@@ -1,6 +1,7 @@
 from pysubparser import parser
 import textstat
 from subtitle_wrapper import SubtitleWrapper
+from datetime import datetime, timedelta, time
 
 
 def read_subs(input_1: str, input_2: str):
@@ -30,10 +31,32 @@ def set_grading_level(subtitles):
     for subtitle in subtitles:
         subtitle.grade_level = textstat.coleman_liau_index(subtitle.subtitle_line.text)
 
+def are_subtitle_line_approximately_same_time(subtitle1, subtitle2, tolerance_seconds=1):
+    start_datetime1 = datetime.combine(datetime.min, subtitle1.start)
+    end_datetime1 = datetime.combine(datetime.min, subtitle1.end)
+
+    start_datetime2 = datetime.combine(datetime.min, subtitle2.start)
+    end_datetime2 = datetime.combine(datetime.min, subtitle2.end)
+
+    # Calculate differences in seconds
+    start_difference = abs((start_datetime1 - start_datetime2).total_seconds())
+    end_difference = abs((end_datetime1 - end_datetime2).total_seconds())
+
+    return start_difference <= tolerance_seconds and end_difference <= tolerance_seconds
+
+
+def compare_subtitles(subtitles1, subtitles2):
+    for subtitle1 in subtitles1:
+        for subtitle2 in subtitles2:
+            result = are_subtitles_approximately_same_time(subtitle1, subtitle2)
+
+
 
 subtitles1, subtitles2 = read_subs("subs_en.srt", "subs_indo.srt")
 set_grading_level(subtitles1)
 set_grading_level(subtitles2)
+
+print(are_subtitle_line_approximately_same_time(subtitles1[273].subtitle_line, subtitles2[303].subtitle_line))
 
 print(subtitles1[-2].subtitle_line.text)
 print(subtitles1[100].subtitle_line.text)
