@@ -71,12 +71,24 @@ def compare_subtitles(subtitles1, subtitles2):
 def synchronize_subtitles(subtitles1, subtitles2, tolerance=0.8):
     for sub1 in subtitles1:
         for sub2 in subtitles2:
+            start_datetime1 = datetime.combine(datetime.min, subtitle1.start)
+            end_datetime1 = datetime.combine(datetime.min, subtitle1.end)
+
+            start_datetime2 = datetime.combine(datetime.min, subtitle2.start)
+            end_datetime2 = datetime.combine(datetime.min, subtitle2.end)
+
+            # Calculate differences in seconds
+            start_difference = abs((start_datetime1 - start_datetime2).total_seconds())
+            end_difference = abs((end_datetime1 - end_datetime2).total_seconds())
+
             if (
-                abs(sub1.start - sub2.start) <= tolerance
-                and abs(sub1.end - sub2.end) <= tolerance
+                abs(sub1.subtitle_line.start - sub2.subtitle_line.start) <= tolerance
+                and abs(sub1.subtitle_line.end - sub2.subtitle_line.end) <= tolerance
             ):
-                sub1.is_sync = True
-                sub2.is_sync = True
+                sub1.id_line_external = sub2.subtitle_line.id
+                sub2.id_line_external = sub1.subtitle_line.id
+                sub1.swap = True
+                sub2.swap = True
 
 
 
@@ -85,8 +97,11 @@ subtitles1, subtitles2 = read_subs("subs_en.srt", "subs_indo.srt")
 set_grading_level(subtitles1)
 set_grading_level(subtitles2)
 
-print(are_subtitle_line_approximately_same_time(subtitles1[273].subtitle_line, subtitles2[303].subtitle_line))
+#print(are_subtitle_line_approximately_same_time(subtitles1[273].subtitle_line, subtitles2[303].subtitle_line))
+print(synchronize_subtitles(subtitles1, subtitles2))
 
-print(subtitles1[-2].subtitle_line.text)
-print(subtitles1[100].subtitle_line.text)
-print(subtitles2[100].subtitle_line.text)
+print(subtitles1[273].swap)
+
+#print(subtitles1[-2].subtitle_line.text)
+#print(subtitles1[100].subtitle_line.text)
+#print(subtitles2[100].subtitle_line.text)
