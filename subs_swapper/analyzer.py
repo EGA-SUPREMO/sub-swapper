@@ -51,7 +51,7 @@ set_grading_level(subtitles2)
 validate_subtitles(subtitles1, subtitles2)
 new_list = swapper.swap_subtitles(subtitles1, subtitles2, 0.5)
 for subtitle in new_list:
-    print(subtitle.text)
+    print(subtitle)
 
 
 
