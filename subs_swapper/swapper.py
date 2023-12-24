@@ -14,11 +14,11 @@ def swap_subtitles(list1, list2, percentage):
     # Randomly select subtitles from both lists to swap
     subtitles_to_swap = random.sample(valid_subtitles_list1, num_subtitles_to_swap)
     subtitles_to_replace = random.sample(valid_subtitles_list2, num_subtitles_to_swap)
-
+    print(subtitles_to_swap)
     # Perform the swapping
     for subtitle_to_swap, subtitle_to_replace in zip(subtitles_to_swap, subtitles_to_replace):
         for i, subtitle_dict in enumerate(result_list):
-            if subtitle_dict['id'] == subtitle_to_swap.id:
+            if subtitle_dict['index'] == subtitle_to_swap.subtitle_line.index:
                 result_list[i]['text'] = subtitle_to_replace.text
 
     # Convert the dictionary representation back to Subtitle objects
@@ -26,7 +26,6 @@ def swap_subtitles(list1, list2, percentage):
 
     return result_list
 
-new_list = swap_subtitles(list1, list2, 0.5)
-
-for subtitle in new_list:
-    print(subtitle.text)
+#new_list = swap_subtitles(list1, list2, 0.5)
+#for subtitle in new_list:
+#    print(subtitle.text)

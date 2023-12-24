@@ -4,6 +4,7 @@ from pysubparser import parser
 from datetime import datetime, timedelta, time
 
 from subs_swapper.subtitle_wrapper import SubtitleWrapper
+import subs_swapper.swapper as swapper
 
 def read_subs(input_1: str, input_2: str):
     subtitle1 = list(parser.parse(input_1))
@@ -48,6 +49,11 @@ set_grading_level(subtitles1)
 set_grading_level(subtitles2)
 
 validate_subtitles(subtitles1, subtitles2)
+new_list = swapper.swap_subtitles(subtitles1, subtitles2, 0.5)
+for subtitle in new_list:
+    print(subtitle.text)
+
+
 
 print(subtitles1[273].is_valid)
 print(subtitles1[273].id_line_external)
