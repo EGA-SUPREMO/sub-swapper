@@ -45,6 +45,22 @@ def are_subtitle_line_approximately_same_time(subtitle1, subtitle2, tolerance_se
     return start_difference <= tolerance_seconds and end_difference <= tolerance_seconds
 
 
+
+def find_best_matching_subtitle(subtitle1, subtitles_other_language, tolerance_seconds=1):
+    best_match = None
+    best_match_difference = float('inf')
+
+    for subtitle2 in subtitles_other_language:
+        # Calculate the time difference between the subtitles with an offset
+        time_difference = abs((subtitle1.start - subtitle2.start).total_seconds())
+
+        if time_difference <= tolerance_seconds and time_difference < best_match_difference:
+            best_match = subtitle2
+            best_match_difference = time_difference
+
+    return best_match
+
+
 def compare_subtitles(subtitles1, subtitles2):
     for subtitle1 in subtitles1:
         for subtitle2 in subtitles2:
