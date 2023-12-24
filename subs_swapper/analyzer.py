@@ -68,6 +68,18 @@ def compare_subtitles(subtitles1, subtitles2):
             result = are_subtitles_approximately_same_time(subtitle1, subtitle2)
 
 
+def synchronize_subtitles(subtitles1, subtitles2, tolerance=0.8):
+    for sub1 in subtitles1:
+        for sub2 in subtitles2:
+            if (
+                abs(sub1.start - sub2.start) <= tolerance
+                and abs(sub1.end - sub2.end) <= tolerance
+            ):
+                sub1.is_sync = True
+                sub2.is_sync = True
+
+
+
 
 subtitles1, subtitles2 = read_subs("subs_en.srt", "subs_indo.srt")
 set_grading_level(subtitles1)
