@@ -1,6 +1,7 @@
 from pysubparser import parser
 import textstat
-from subtitle_wrapper import SubtitleWrapper
+from subs_swapper.subtitle_wrapper import SubtitleWrapper
+
 from datetime import datetime, timedelta, time
 
 

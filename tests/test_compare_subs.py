@@ -1,8 +1,10 @@
 import unittest
 from datetime import time
 import textstat
+import subs_swapper.analyzer as analyzer
 from subs_swapper.subtitle_wrapper import SubtitleWrapper
-import subs_swapper.analizer
+from pysubparser import parser
+
 
 class TestSubtitleMatching(unittest.TestCase):
     def setUp(self):
