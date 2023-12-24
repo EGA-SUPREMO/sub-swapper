@@ -32,43 +32,8 @@ def set_grading_level(subtitles):
     for subtitle in subtitles:
         subtitle.grade_level = textstat.coleman_liau_index(subtitle.subtitle_line.text)
 
-def are_subtitle_line_approximately_same_time(subtitle1, subtitle2, tolerance_seconds=1):
-    start_datetime1 = datetime.combine(datetime.min, subtitle1.start)
-    end_datetime1 = datetime.combine(datetime.min, subtitle1.end)
 
-    start_datetime2 = datetime.combine(datetime.min, subtitle2.start)
-    end_datetime2 = datetime.combine(datetime.min, subtitle2.end)
-
-    # Calculate differences in seconds
-    start_difference = abs((start_datetime1 - start_datetime2).total_seconds())
-    end_difference = abs((end_datetime1 - end_datetime2).total_seconds())
-
-    return start_difference <= tolerance_seconds and end_difference <= tolerance_seconds
-
-
-
-def find_best_matching_subtitle(subtitle1, subtitles_other_language, tolerance_seconds=1):
-    best_match = None
-    best_match_difference = float('inf')
-
-    for subtitle2 in subtitles_other_language:
-        # Calculate the time difference between the subtitles with an offset
-        time_difference = abs((subtitle1.start - subtitle2.start).total_seconds())
-
-        if time_difference <= tolerance_seconds and time_difference < best_match_difference:
-            best_match = subtitle2
-            best_match_difference = time_difference
-
-    return best_match
-
-
-def compare_subtitles(subtitles1, subtitles2):
-    for subtitle1 in subtitles1:
-        for subtitle2 in subtitles2:
-            result = are_subtitles_approximately_same_time(subtitle1, subtitle2)
-
-
-def synchronize_subtitles(subtitles1, subtitles2, tolerance=0.8):
+def are_subtitle_line_approximately_same_time(subtitles1, subtitles2, tolerance=0.8):
     for sub1 in subtitles1:
         for sub2 in subtitles2:
             start_datetime1 = datetime.combine(datetime.min, sub1.subtitle_line.start)
@@ -95,12 +60,12 @@ set_grading_level(subtitles1)
 set_grading_level(subtitles2)
 
 #print(are_subtitle_line_approximately_same_time(subtitles1[273].subtitle_line, subtitles2[303].subtitle_line))
-synchronize_subtitles(subtitles1, subtitles2)
+are_subtitle_line_approximately_same_time(subtitles1, subtitles2)
 
 print(subtitles1[273].swap)
+print(subtitles1[273].id_line_external)
 print(subtitles2[306].swap)
 print(subtitles2[306].id_line_external)
-print(subtitles2[306].subtitle_line.text)
 
 #print(subtitles1[-2].subtitle_line.text)
 #print(subtitles1[100].subtitle_line.text)
