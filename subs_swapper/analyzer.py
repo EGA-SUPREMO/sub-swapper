@@ -12,10 +12,10 @@ def read_subs(input_1: str, input_2: str):
     subtitle_wrappers2 = []
 
     for subtitle in subtitle1:
-        subtitle_wrapper = SubtitleWrapper(subtitle, 0, 0, False)
+        subtitle_wrapper = SubtitleWrapper(subtitle, 0, False)
         subtitle_wrappers1.append(subtitle_wrapper)
     for subtitle in subtitle2:
-        subtitle_wrapper = SubtitleWrapper(subtitle, 0, 0, False)
+        subtitle_wrapper = SubtitleWrapper(subtitle, 0, False)
         subtitle_wrappers2.append(subtitle_wrapper)
 
     return subtitle_wrappers1, subtitle_wrappers2
@@ -39,8 +39,8 @@ def validate_subtitles(subtitles1, subtitles2, tolerance=0.8):
             if (start_difference <= tolerance and end_difference <= tolerance):
                 sub1.id_line_external = sub2.subtitle_line.index
                 sub2.id_line_external = sub1.subtitle_line.index
-                sub1.swap = True
-                sub2.swap = True
+                sub1.is_valid = True
+                sub2.is_valid = True
 
 
 subtitles1, subtitles2 = read_subs("subs_en.srt", "subs_indo.srt")
@@ -49,7 +49,7 @@ set_grading_level(subtitles2)
 
 validate_subtitles(subtitles1, subtitles2)
 
-print(subtitles1[273].swap)
+print(subtitles1[273].is_valid)
 print(subtitles1[273].id_line_external)
-print(subtitles2[306].swap)
+print(subtitles2[306].is_valid)
 print(subtitles2[306].id_line_external)
