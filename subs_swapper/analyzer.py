@@ -54,12 +54,9 @@ set_grading_level(subtitles2)
 
 validate_subtitles(subtitles1, subtitles2)
 
-# Count the number of items where is_valid is True
-#count_valid_items = sum(subtitle.is_valid for subtitle in subtitles2)
-#print(count_valid_items)
-new_list = swapper.swap_subtitles(subtitles1, subtitles2, 0.5)
-#for subtitle in new_list:
-#    print(subtitle)
+new_subs = swapper.swap_subtitles(subtitles1, subtitles2, 0.5)
+for subtitle in new_subs:
+    print(subtitle['subtitle_line'])
 
 
 print("-----")
