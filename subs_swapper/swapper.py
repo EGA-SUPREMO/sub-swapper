@@ -43,10 +43,13 @@ def swap_subtitles(list1, list2, percentage):
     # Determine the number of subtitles to swap based on the percentage
     num_subtitles_to_swap = int(len(list1) * percentage)
     random.seed(42)
-
+    print(num_subtitles_to_swap)
     subtitles_to_swap = random.sample(valid_subtitles_list1, num_subtitles_to_swap)
     subtitles_to_replace = valid_subtitles_list2
 
+    print(len(subtitles_to_swap))
+    print(len(subtitles_to_replace))
+    print(len(valid_subtitles_list1))
 # subtitle_to_replace = indo
 # subtitle_to_swap = eng
 
