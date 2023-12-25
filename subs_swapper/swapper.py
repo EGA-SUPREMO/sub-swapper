@@ -62,21 +62,14 @@ def swap_subtitles(list1, list2, percentage):
 # subtitle_to_swap = eng
 
     for subtitle_wrapper_dict, subtitle_to_swap, subtitle_to_replace in zip(result_list, subtitles_to_swap, subtitles_to_replace):
-        #print("igonarr max length: " + subtitle_to_swap.subtitle_line.text)
-        if subtitle_wrapper_dict['id_line_external'] == subtitle_to_swap.subtitle_line.index:
+        if subtitle_wrapper_dict['id_line_external'] == subtitle_to_replace.subtitle_line.index:
             print(subtitle_wrapper_dict['subtitle_line'])
             print(subtitle_to_replace.subtitle_line)
-            print(subtitle_to_swap.subtitle_line)
-            #subtitle_wrapper_dict['subtitle_line']['text'] = subtitle_to_replace.subtitle_line.text
+
             subtitle_wrapper_dict['subtitle_line'] = {'text': subtitle_to_replace.subtitle_line.text}
 
             subtitle_wrapper_dict['id_line_external'] = -1
             subtitle_wrapper_dict['grade_level'] = 0
             subtitle_wrapper_dict['is_valid'] = False
-
-            #print(subtitle_wrapper_dict['subtitle_line']['text'])
-            #print(subtitle_to_replace.subtitle_line.text)
-            #return
-
-
+            
     return result_list
