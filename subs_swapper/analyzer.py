@@ -62,7 +62,7 @@ new_list = swapper.swap_subtitles(subtitles1, subtitles2, 0.5)
 #    print(subtitle)
 
 
-
+print("-----")
 print(subtitles1[273].is_valid)
 print(subtitles1[273].id_line_external)
 print(subtitles2[306].is_valid)
