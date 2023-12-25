@@ -42,8 +42,7 @@ def swap_subtitles(list1, list2, percentage):
 
     # Randomly select subtitles from both lists to swap
     subtitles_to_swap = random.sample(valid_subtitles_list1, num_subtitles_to_swap)
-    subtitles_to_replace = random.sample(valid_subtitles_list2, num_subtitles_to_swap)
-
+    subtitles_to_replace = valid_subtitles_list2
     # Perform the swapping
 #    for subtitle_to_swap, subtitle_to_replace in zip(subtitles_to_swap, subtitles_to_replace):
 #        for i, subtitle_wrapper in enumerate(result_list):
@@ -55,9 +54,25 @@ def swap_subtitles(list1, list2, percentage):
 #        for i, subtitle_dict in enumerate(result_list):
 #            if subtitle_dict['id_line_external'] == subtitle_to_swap['id_line_external']:
 #                result_list[i]['subtitle_line']['text'] = subtitle_to_replace['subtitle_line']['text']
+
     for subtitle_wrapper_dict, subtitle_to_swap, subtitle_to_replace in zip(result_list, subtitles_to_swap, subtitles_to_replace):
-        if subtitle_wrapper_dict['id_line_external'] == subtitle_to_swap.id_line_external:
-            subtitle_wrapper_dict['subtitle_line']['text'] = subtitle_to_replace.subtitle_line.text
+        print("igonarr max length: " + subtitle_to_swap.subtitle_line.text)
+        if subtitle_wrapper_dict['id_line_external'] == subtitle_to_swap.subtitle_line.index:
+            print(subtitle_wrapper_dict['subtitle_line'])
+            print(subtitle_to_replace.subtitle_line.text)
+            print(subtitle_to_replace.subtitle_line.index)
+            print(subtitle_to_swap.subtitle_line.text)
+            print(subtitle_to_swap.subtitle_line.index)
+            #subtitle_wrapper_dict['subtitle_line']['text'] = subtitle_to_replace.subtitle_line.text
+            subtitle_wrapper_dict['subtitle_line'] = {'text': subtitle_to_replace.subtitle_line.text}
+
+            subtitle_wrapper_dict['id_line_external'] = 0
+            subtitle_wrapper_dict['grade_level'] = 0
+            subtitle_wrapper_dict['is_valid'] = False
+
+            #print(subtitle_wrapper_dict['subtitle_line']['text'])
+            #print(subtitle_to_replace.subtitle_line.text)
+            #return
 
 
     return result_list
