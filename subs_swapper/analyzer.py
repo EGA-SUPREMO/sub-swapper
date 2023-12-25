@@ -43,15 +43,23 @@ def validate_subtitles(subtitles1, subtitles2, tolerance=0.8):
                 sub1.is_valid = True
                 sub2.is_valid = True
 
+                #if (subtitles1[58].subtitle_line.index==sub1.subtitle_line.index):
+                #    print(subtitles1[58].subtitle_line.text)
+                #    print(subtitles1[58].id_line_external)
+
 
 subtitles1, subtitles2 = read_subs("subs_en.srt", "subs_indo.srt")
 set_grading_level(subtitles1)
 set_grading_level(subtitles2)
 
 validate_subtitles(subtitles1, subtitles2)
+
+# Count the number of items where is_valid is True
+#count_valid_items = sum(subtitle.is_valid for subtitle in subtitles2)
+#print(count_valid_items)
 new_list = swapper.swap_subtitles(subtitles1, subtitles2, 0.5)
-for subtitle in new_list:
-    print(subtitle)
+#for subtitle in new_list:
+#    print(subtitle)
 
 
 
