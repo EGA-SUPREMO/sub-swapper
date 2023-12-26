@@ -32,10 +32,7 @@ def main():
     if path_arg is None:
         path_arg = './output.srt'
 
-    print(f"arg -p: {percentage_arg}")
-    print(f"arg -g: {grade_reading_arg}")
-    print(f"arg -o: {path_arg}")
-    print(f"arg -i: {input_path_arg_subs[0]}, {input_path_arg_subs[1]}")
+    print(f"Your input includes a percentage of {percentage_arg}%, a grade reading level of {grade_reading_arg}, an output path at '{path_arg}' and two input path of '{input_path_arg_subs[0]}' and '{input_path_arg_subs[1]}'.")
 
     percentage = percentage_arg/100
 
