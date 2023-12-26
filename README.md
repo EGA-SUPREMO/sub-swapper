@@ -9,4 +9,5 @@ las expreciosnes pueden hace que uno no entineda a pesar ed que parezca que si, 
 * dar de advertencia que los dos subs deben estar sincronizados, y que si necesita, que use cierto comando del pograma para hacerlo(bukan terbuat oleh aku, tapi jangan bilang itu di video)
 
 Objetivo secundario
+* dar instruciones de como ejecutar los tests(kalaupun tests tidak berhasil)
 * anadir soporte para extenciones, ej language reactor, donde se agrega subtitulo ya cambiado para los que usan neftflix con esa extension, y la gente que no lo hacen con contenido descargado o para youtube
