@@ -9,33 +9,39 @@ def main():
     parser = argparse.ArgumentParser(description='Your trustful sub swapper, improve this descript TODO.')
 
     parser.add_argument('-p', type=int, help='Specify a number for percentage')
+    parser.add_argument('-o', type=str, help='Specify a path for output file')
     parser.add_argument('-g', type=int, help='Specify a number for grade-level')
     parser.add_argument('-i', nargs=2, help='Specify two strings for input subtitles')
 
     args = parser.parse_args()
 
-    p_value = args.p
-    g_value = args.g
-    i_values = args.i
+    percentage_arg = args.p
+    grade_reading_arg = args.g
+    input_path_arg_subs = args.i
+    path_arg = args.o
 
-    if  i_values is None:
+    if input_path_arg_subs is None:
         parser.error('Missing required arguments for -i. Use -h for help.')
-    if p_value is None:
-        p_value = 5
-    if  g_value is None:
-        g_value = 5
+    if percentage_arg is None:
+        percentage_arg = 5
+    if grade_reading_arg is None:
+        grade_reading_arg = 5
+    if path_arg is None:
+        path_arg = './output.srt'
 
-    print(f"arg -p: {p_value}")
-    print(f"arg -g: {g_value}")
-    print(f"arg -i: {i_values[0]}, {i_values[1]}")
+    print(f"arg -p: {percentage_arg}")
+    print(f"arg -g: {grade_reading_arg}")
+    print(f"arg -o: {path_arg}")
+    print(f"arg -i: {input_path_arg_subs[0]}, {input_path_arg_subs[1]}")
 
-    path = './helo.srt'
-    subtitles1, subtitles2 = analyzer.read_subs("subs_en.srt", "subs_indo.srt")
+    percentage = percentage_arg/100
+
+    subtitles1, subtitles2 = analyzer.read_subs(input_path_arg_subs[0], input_path_arg_subs[1])
     analyzer.set_grading_level(subtitles1)
     analyzer.set_grading_level(subtitles2)
     analyzer.validate_subtitles(subtitles1, subtitles2)
-    swapped_subs = swapper.swap_subtitles(subtitles1, subtitles2, 0.5)
-    writer.write_srt(swapped_subs, path)
+    swapped_subs = swapper.swap_subtitles(subtitles1, subtitles2, percentage)
+    writer.write_srt(swapped_subs, path_arg)
 
 
 if __name__ == '__main__':
