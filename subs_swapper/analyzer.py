@@ -1,11 +1,11 @@
 import textstat
 
 from pysubparser import parser
-from pysubparser.writers import srt
 from datetime import datetime, timedelta, time
 
 from subs_swapper.subtitle_wrapper import SubtitleWrapper
 import subs_swapper.swapper as swapper
+import subs_swapper.writer as writer
 
 def read_subs(input_1: str, input_2: str):
     subtitle1 = list(parser.parse(input_1))
@@ -44,28 +44,12 @@ def validate_subtitles(subtitles1, subtitles2, tolerance=0.8):
                 sub1.is_valid = True
                 sub2.is_valid = True
 
-                #if (subtitles1[58].subtitle_line.index==sub1.subtitle_line.index):
-                #    print(subtitles1[58].subtitle_line.text)
-                #    print(subtitles1[58].id_line_external)
 
 
+path = './helo.srt'
 subtitles1, subtitles2 = read_subs("subs_en.srt", "subs_indo.srt")
 set_grading_level(subtitles1)
 set_grading_level(subtitles2)
-
 validate_subtitles(subtitles1, subtitles2)
-
-new_subs = swapper.swap_subtitles(subtitles1, subtitles2, 0.5)
-write_subs = []
-for subtitle in new_subs:
-    print(subtitle['subtitle_line'])
-    write_subs.append(subtitle['subtitle_line'])
-#subtitle_objects = [Subtitle(subtitle['subtitle_line']) for subtitle in new_subs]
-
-srt.write(write_subs, './helo.srt')
-
-print("-----")
-print(subtitles1[273].is_valid)
-print(subtitles1[273].id_line_external)
-print(subtitles2[306].is_valid)
-print(subtitles2[306].id_line_external)
+swapped_subs = swapper.swap_subtitles(subtitles1, subtitles2, 0.5)
+writer.write_srt(swapped_subs, path)
