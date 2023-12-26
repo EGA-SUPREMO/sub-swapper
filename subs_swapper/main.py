@@ -8,7 +8,7 @@ import subs_swapper.analyzer as analyzer
 def main():
     parser = argparse.ArgumentParser(description='Your trustful sub swapper, improve this descript TODO.')
 
-    parser.add_argument('-p', type=int, help='Specify a number for percentage')
+    parser.add_argument('-p', type=int, help='Specify a number for the percentage of the subtitle that will be swapped')
     parser.add_argument('-o', type=str, help='Specify a path for output file')
     parser.add_argument('-g', type=int, help='Specify a number for grade-level')
     parser.add_argument('-i', nargs=2, help='Specify two strings for input subtitles')
@@ -24,6 +24,10 @@ def main():
         parser.error('Missing required arguments for -i. Use -h for help.')
     if percentage_arg is None:
         percentage_arg = 5
+    if percentage_arg < 1:
+        parser.error('Percentage must be an number between 1 - 99. Use -h for help.')
+    if grade_reading_arg < 0:
+        parser.error('Grade reading level must be an number above 0. Use -h for help.')
     if percentage_arg > 100:
         print('Warning: percentage is above 100. Setting it to 100.')
         percentage_arg = 100
