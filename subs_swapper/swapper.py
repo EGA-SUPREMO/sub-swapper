@@ -5,10 +5,10 @@ from pysubparser.classes.subtitle import Subtitle
 
 from subs_swapper.subtitle_wrapper import SubtitleWrapper
 
-def swap_subtitles(list1, list2, percentage):
+def swap_subtitles(list1, list2, percentage, reading_level):
     result_list = [copy.deepcopy(subtitle.__dict__) for subtitle in list1]
 
-    valid_subtitles_list1 = [subtitle for subtitle in list1 if subtitle.is_valid]
+    valid_subtitles_list1 = [subtitle for subtitle in list1 if subtitle.is_valid and subtitle.grade_level < reading_level]
     valid_subtitles_list2 = [subtitle for subtitle in list2 if subtitle.is_valid]
 
     num_subtitles_to_swap = int(len(list1) * percentage)

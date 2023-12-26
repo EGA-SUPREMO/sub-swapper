@@ -44,7 +44,7 @@ def main():
     analyzer.set_grading_level(subtitles1)
     analyzer.set_grading_level(subtitles2)
     analyzer.validate_subtitles(subtitles1, subtitles2)
-    swapped_subs = swapper.swap_subtitles(subtitles1, subtitles2, percentage)
+    swapped_subs = swapper.swap_subtitles(subtitles1, subtitles2, percentage, grade_reading_arg)
     writer.write_srt(swapped_subs, path_arg)
 
 

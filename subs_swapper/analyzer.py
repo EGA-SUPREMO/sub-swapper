@@ -1,5 +1,6 @@
 import textstat
 
+from pysubparser.cleaners import brackets, formatting
 from pysubparser import parser
 from datetime import datetime, timedelta, time
 
@@ -21,8 +22,15 @@ def read_subs(input_1: str, input_2: str):
     return subtitle_wrappers1, subtitle_wrappers2
 
 def set_grading_level(subtitles):
+    subtitles_cleaned = []
     for subtitle in subtitles:
-        subtitle.grade_level = textstat.coleman_liau_index(subtitle.subtitle_line.text)
+        subtitles_cleaned.append(list(
+            formatting.clean(
+                [subtitle.subtitle_line]
+            )
+        )[0])
+    for index, subtitle in enumerate(subtitles_cleaned):
+        subtitles[index].grade_level = textstat.coleman_liau_index(subtitle.text)
 
 def validate_subtitles(subtitles1, subtitles2, tolerance=0.8):
     for sub1 in subtitles1:
