@@ -43,27 +43,34 @@ def swap_subtitles(list1, list2, percentage):
     # Determine the number of subtitles to swap based on the percentage
     num_subtitles_to_swap = int(len(list1) * percentage)
     random.seed(42)
-    print(num_subtitles_to_swap)
     subtitles_to_swap = random.sample(valid_subtitles_list1, num_subtitles_to_swap)
     subtitles_to_replace = valid_subtitles_list2
+    print(result_list[0])
+    print(result_list[150])
+#subtitles_to_swap # 140 eng
+#subtitles_to_replace # 240 indo
+#result_list # 240 eng
+    for subtitle_to_swap in subtitles_to_swap:
+        result_list[subtitle_to_swap.subtitle_line.index] = subtitle_to_swap
+#['subtitle_line'] = Subtitle(
+#                index=subtitle_wrapper_dict['subtitle_line'].index,
+#                start=subtitle_wrapper_dict['subtitle_line'].start,
+#                end=subtitle_wrapper_dict['subtitle_line'].end,
+#                lines=subtitle_to_replace.subtitle_line.lines)
 
-    print(subtitles_to_swap)
 # subtitle_to_replace = indo
 # subtitle_to_swap = eng
-    i = 0
-    for subtitle_wrapper_dict, subtitle_to_swap, subtitle_to_replace in zip(result_list, subtitles_to_swap, subtitles_to_replace):
-        print(i)
-        i = i +1
-        if subtitle_wrapper_dict['id_line_external'] == subtitle_to_replace.subtitle_line.index:
+#    for subtitle_wrapper_dict, subtitle_to_replace in zip(result_list, subtitles_to_replace):
+#        if subtitle_wrapper_dict['id_line_external'] == subtitle_to_replace.subtitle_line.index:
 
-            subtitle_wrapper_dict['subtitle_line'] = Subtitle(
-                index=subtitle_wrapper_dict['subtitle_line'].index,
-                start=subtitle_wrapper_dict['subtitle_line'].start,
-                end=subtitle_wrapper_dict['subtitle_line'].end,
-                lines=subtitle_to_replace.subtitle_line.lines)
+#            subtitle_wrapper_dict['subtitle_line'] = Subtitle(
+#                index=subtitle_wrapper_dict['subtitle_line'].index,
+#                start=subtitle_wrapper_dict['subtitle_line'].start,
+#                end=subtitle_wrapper_dict['subtitle_line'].end,
+#                lines=subtitle_to_replace.subtitle_line.lines)
 
-            subtitle_wrapper_dict['id_line_external'] = -1
-            subtitle_wrapper_dict['grade_level'] = 0
-            subtitle_wrapper_dict['is_valid'] = False
+#            subtitle_wrapper_dict['id_line_external'] = -1
+#            subtitle_wrapper_dict['grade_level'] = 0
+#            subtitle_wrapper_dict['is_valid'] = False
 
     return result_list

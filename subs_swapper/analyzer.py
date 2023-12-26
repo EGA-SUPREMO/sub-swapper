@@ -56,7 +56,7 @@ validate_subtitles(subtitles1, subtitles2)
 
 new_subs = swapper.swap_subtitles(subtitles1, subtitles2, 0.5)
 #for subtitle in new_subs:
-#    print(subtitle['subtitle_line'])
+#    print(subtitle)
 
 
 print("-----")
