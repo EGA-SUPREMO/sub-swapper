@@ -47,13 +47,13 @@ def swap_subtitles(list1, list2, percentage):
     subtitles_to_swap = random.sample(valid_subtitles_list1, num_subtitles_to_swap)
     subtitles_to_replace = valid_subtitles_list2
 
-    print(len(subtitles_to_swap))
-    print(len(subtitles_to_replace))
-    print(len(valid_subtitles_list1))
+    print(subtitles_to_swap)
 # subtitle_to_replace = indo
 # subtitle_to_swap = eng
-
+    i = 0
     for subtitle_wrapper_dict, subtitle_to_swap, subtitle_to_replace in zip(result_list, subtitles_to_swap, subtitles_to_replace):
+        print(i)
+        i = i +1
         if subtitle_wrapper_dict['id_line_external'] == subtitle_to_replace.subtitle_line.index:
 
             subtitle_wrapper_dict['subtitle_line'] = Subtitle(
