@@ -24,6 +24,9 @@ def main():
         parser.error('Missing required arguments for -i. Use -h for help.')
     if percentage_arg is None:
         percentage_arg = 5
+    if percentage_arg > 100:
+        print('Warning: percentage is above 100. Setting it to 100.')
+        percentage_arg = 100
     if grade_reading_arg is None:
         grade_reading_arg = 5
     if path_arg is None:
