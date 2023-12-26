@@ -28,8 +28,8 @@ def main():
         parser.error('Percentage must be an number between 1 - 99. Use -h for help.')
     if grade_reading_arg < 0:
         parser.error('Grade reading level must be an number above 0. Use -h for help.')
-    if percentage_arg > 100:
-        print('Warning: percentage is above 100. Setting it to 100.')
+    if percentage_arg > 99:
+        print('Warning: percentage is above 99. Setting it to 99.')
         percentage_arg = 100
     if grade_reading_arg is None:
         grade_reading_arg = 5
