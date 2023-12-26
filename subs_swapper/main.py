@@ -1,5 +1,10 @@
 import argparse
 
+from subs_swapper.subtitle_wrapper import SubtitleWrapper
+import subs_swapper.swapper as swapper
+import subs_swapper.writer as writer
+import subs_swapper.analyzer as analyzer
+
 def main():
     parser = argparse.ArgumentParser(description='Your trustful sub swapper, improve this descript TODO.')
 
@@ -23,6 +28,14 @@ def main():
     print(f"arg -p: {p_value}")
     print(f"arg -g: {g_value}")
     print(f"arg -i: {i_values[0]}, {i_values[1]}")
+
+    path = './helo.srt'
+    subtitles1, subtitles2 = analyzer.read_subs("subs_en.srt", "subs_indo.srt")
+    analyzer.set_grading_level(subtitles1)
+    analyzer.set_grading_level(subtitles2)
+    analyzer.validate_subtitles(subtitles1, subtitles2)
+    swapped_subs = swapper.swap_subtitles(subtitles1, subtitles2, 0.5)
+    writer.write_srt(swapped_subs, path)
 
 
 if __name__ == '__main__':

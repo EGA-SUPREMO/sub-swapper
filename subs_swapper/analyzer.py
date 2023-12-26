@@ -4,8 +4,6 @@ from pysubparser import parser
 from datetime import datetime, timedelta, time
 
 from subs_swapper.subtitle_wrapper import SubtitleWrapper
-import subs_swapper.swapper as swapper
-import subs_swapper.writer as writer
 
 def read_subs(input_1: str, input_2: str):
     subtitle1 = list(parser.parse(input_1))
@@ -43,13 +41,3 @@ def validate_subtitles(subtitles1, subtitles2, tolerance=0.8):
                 sub2.id_line_external = sub1.subtitle_line.index
                 sub1.is_valid = True
                 sub2.is_valid = True
-
-
-
-path = './helo.srt'
-subtitles1, subtitles2 = read_subs("subs_en.srt", "subs_indo.srt")
-set_grading_level(subtitles1)
-set_grading_level(subtitles2)
-validate_subtitles(subtitles1, subtitles2)
-swapped_subs = swapper.swap_subtitles(subtitles1, subtitles2, 0.5)
-writer.write_srt(swapped_subs, path)
