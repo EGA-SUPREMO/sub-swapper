@@ -3,7 +3,9 @@
 Learn languages the easy way.
 
 ---
-Sub Swapper is a Python script designed to swap a specified percentage of subtitles between two subtitle files while considering a specified grade level to try to guess whenever the viewer would understand that sentence
+Sub Swapper is a Python script designed to swap a specified percentage of subtitles between two subtitle files. It also takes into account a specified grade level to intelligently guess whether the viewer would likely understand each sentence.
+
+The script is designed to enhance language learning by making it easier and more enjoyable to practice new languages. The recommended usage is to watch TV series or films dubbed in the target language you want to learn, with subtitles comprising 80% in your native language and 20% in the language of the dub.
 
 ## Features
 * Swap a percentage of subtitles between two subtitle files.
