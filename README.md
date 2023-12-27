@@ -26,8 +26,7 @@ Remember that expressions and idioms might affect understanding, even though the
 We welcome contributions! Feel free to open issues, submit pull requests, or share your ideas.
 
 ## License
-This project is licensed under the MIT License.
-
+This project is licensed under the [GNU General Public License (GPL) version 3](LICENSE)
 
 Rememeber to put the program that I painfully made to mesauere the grade level reading, to try to guess whenever the viewer would understand that sentence
 
