@@ -14,6 +14,8 @@ def swap_subtitles(list1, list2, percentage, reading_level):
     num_subtitles_to_swap = int(len(list1) * percentage)
     if num_subtitles_to_swap > len(valid_subtitles_list1):
         num_subtitles_to_swap = len(valid_subtitles_list1)
+        print(f"Warning: You requested {percentage * 100:.0f}%, but only {num_subtitles_to_swap / len(list1) * 100:.2f}% of subtitles have a grading level below {reading_level}. Setting to the maximum available, which is {num_subtitles_to_swap / len(list1)*100:.2f}%.")
+
 
     subtitles_to_swap = random.sample(valid_subtitles_list1, num_subtitles_to_swap)
     subtitles_to_replace = valid_subtitles_list2

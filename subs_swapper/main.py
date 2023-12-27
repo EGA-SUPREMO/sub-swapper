@@ -30,13 +30,13 @@ def main():
         parser.error('Grade reading level must be an number above 0. Use -h for help.')
     if percentage_arg > 99:
         print('Warning: percentage is above 99. Setting it to 99.')
-        percentage_arg = 100
+        percentage_arg = 99
     if grade_reading_arg is None:
         grade_reading_arg = 5
     if path_arg is None:
         path_arg = './output.srt'
 
-    print(f"Your input includes a percentage of {percentage_arg}%, a grade reading level of {grade_reading_arg}, an output path at '{path_arg}' and two input path of '{input_path_arg_subs[0]}' and '{input_path_arg_subs[1]}'.")
+    print(f"Info: Your input includes a percentage of {percentage_arg}%, a grade reading level of {grade_reading_arg}, an output path at '{path_arg}' and two input path of '{input_path_arg_subs[0]}' and '{input_path_arg_subs[1]}'.")
 
     percentage = percentage_arg/100
 
