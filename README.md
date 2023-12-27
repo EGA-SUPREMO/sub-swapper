@@ -1,4 +1,8 @@
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 # Sub Swapper
+Learn languages the easy way.
+
+---
 Sub Swapper is a Python script designed to swap a specified percentage of subtitles between two subtitle files while considering a specified grade level to try to guess whenever the viewer would understand that sentence
 
 ## Features
