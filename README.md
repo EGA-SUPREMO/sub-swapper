@@ -17,7 +17,7 @@ Sub Swapper is a Python script designed to swap a specified percentage of subtit
 This command will swap 20% of subtitles between `subs_english.srt` and `subs_spanish.srt`, considering a grade level of 3, and save the result in `output.srt`.
 
 ### Notes
-Remember that expressions and idioms might affect understanding.
+Remember that expressions and idioms might affect understanding, even though they may appear to has a low grading level
 
 ### Limitations
 * Both subtitles need to be synchronized
