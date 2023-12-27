@@ -6,12 +6,12 @@ import subs_swapper.writer as writer
 import subs_swapper.analyzer as analyzer
 
 def main():
-    parser = argparse.ArgumentParser(description='Your trustful sub swapper, improve this descript TODO.')
+    parser = argparse.ArgumentParser(description='A python script that swaps subtitle lines for an easier language learning, by considering whether to swap the subtitle line based on specific criteria.')
 
-    parser.add_argument('-p', type=int, help='Specify a number for the percentage of the subtitle that will be swapped')
-    parser.add_argument('-o', type=str, help='Specify a path for output file')
+    parser.add_argument('-p', type=int, help='Specify a number for the percentage of the subtitle to be swapped')
+    parser.add_argument('-o', type=str, help='Specify a output path for swapped subtitles')
     parser.add_argument('-g', type=int, help='Specify a number for grade-level')
-    parser.add_argument('-i', nargs=2, help='Specify two strings for input subtitles')
+    parser.add_argument('-i', nargs=2, help='Specify two strings for input subtitle files1')
 
     args = parser.parse_args()
 
