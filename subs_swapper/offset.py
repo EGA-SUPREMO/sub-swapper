@@ -22,7 +22,15 @@ def convert_to_seconds(time_str):
     return time_obj.hour * 3600 + time_obj.minute * 60 + time_obj.second + time_obj.microsecond / 1e6
 
 def format_time(seconds):
-    return str(timedelta(seconds=seconds))[:-3]
+    time_obj = timedelta(seconds=seconds)
+    formatted_time = "{:02}:{:02}:{:06.3f}".format(
+        int(time_obj.total_seconds() // 3600),
+        int((time_obj.total_seconds() % 3600) // 60),
+        time_obj.total_seconds() % 60
+    )
+    formatted_time = formatted_time.replace('.', ',')
+    
+    return formatted_time
 
 def offset_subtitle(subtitle, offset):
     start_time, end_time = subtitle.group(1, 2)
