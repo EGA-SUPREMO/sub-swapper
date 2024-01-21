@@ -11,8 +11,6 @@ def main():
 
     args = parser.parse_args()
 
-    print(args.i)
-
     if args.i is None:
         parser.error('Missing required arguments for -i. Use -h for help.')
 
