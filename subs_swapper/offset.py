@@ -6,7 +6,7 @@ import argparse
 def main():
     parser = argparse.ArgumentParser(description='Temp script to offset subs.')
     parser.add_argument('-o', type=str, help='Specify a output path for offset subtitle')
-    parser.add_argument('-s', type=int, help='Specify a time to offset')
+    parser.add_argument('-s', type=float, help='Specify a time to offset')
     parser.add_argument('-i', type=str, help='Specify a string for input subtitle file')
 
     args = parser.parse_args()
