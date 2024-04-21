@@ -2,7 +2,7 @@
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 # Sub Swapper
 Learn languages the easy way.
-
+![logo](https://github.com/EGA-SUPREMO/sub-swapper/blob/main/logo-mini.webp)
 ---
 Sub Swapper is a Python script designed to swap a specified percentage of subtitles between two subtitle files. It also takes into account a specified grade level to intelligently guess whether the viewer would likely understand each sentence.
 
@@ -33,7 +33,7 @@ python3 -m tests.test_compare_subs
 ```
 ### Limitations
 * Both subtitles need to be synchronized
-* Remember that expressions and idioms might affect understanding, even though they may appear to has a low grading level
+* Remember that expressions and idioms might affect understanding, even though they may appear to have a low grading level
 
 ## How to Contribute
 We welcome contributions! Feel free to open issues, submit pull requests, or share your ideas.
